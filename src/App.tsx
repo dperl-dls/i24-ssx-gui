@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChakraProvider, Box, Text, VStack, Grid, theme, HStack } from "@chakra-ui/react";
+import { ChakraProvider, Box, Text, VStack, Grid, theme, HStack, Button } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { PollingRoPvBox } from "./components/pv";
@@ -15,7 +15,7 @@ export const App = () => (
           </HStack>
           <Tabs>
             <TabList>
-              <Tab>Smargon positions</Tab>
+              <Tab>Detector stage</Tab>
               <Tab>2</Tab>
               <Tab>3</Tab>
             </TabList>
@@ -23,10 +23,9 @@ export const App = () => (
               <TabPanel>
                 <HStack spacing={2}>
                   <VStack spacing={1}>
-                    <PollingRoPvBox name="omega" pv="BL03I-MO-SGON-01:OMEGA.RBV" />
-                    <PollingRoPvBox name="X" pv="BL03I-MO-SGON-01:X.RBV" />
-                    <PollingRoPvBox name="Y" pv="BL03I-MO-SGON-01:Y.RBV" />
-                    <PollingRoPvBox name="Z" pv="BL03I-MO-SGON-01:Z.RBV" />
+                    <PollingRoPvBox name="Detector" pv="ME14E-MO-IOC-01:GP101" dType="string" />
+                    <PollingRoPvBox name="Detector stage position" pv="BL24I-EA-DET-01:Y" />
+                    <Button>Move stage!</Button>
                   </VStack>
                 </HStack>
               </TabPanel>
