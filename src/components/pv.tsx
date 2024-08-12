@@ -115,7 +115,11 @@ export const SetPvButton = (props: SetPvProps) => {
     variables: { id: props.pv },
     pollInterval: props.pollInterval || 100,
   });
-  let current = parseFloat(reading.data.getChannel.value.string)
+  let current = (() => {
+    if (reading.loading) return 0;
+    if (reading.error) return 0;
+    return parseFloat(reading.data.getChannel.value.string)
+  })()
   const [setPv, { loading, error, data }] = useMutation(SET_PV_QUERY, {
     variables: { ids: [props.set_pv || props.pv], values: [modifyNumber(current).toString()] },
   });
