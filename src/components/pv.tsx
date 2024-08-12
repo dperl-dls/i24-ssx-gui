@@ -59,8 +59,8 @@ export const PollingRoPvBox = (props: PvProps) => {
   });
 };
 
-export const OnOffPvButtons = (props: PvProps) => {
-  let colormap = (state: any) => state === "Closed" ? "red" : "green"
+export const OnOffPvButtons = (props: PvProps & {colormap: (value: any) => string}) => {
+  let colormap = props.colormap
   return PvComponent({
     ...props,
     render: (props: PvItem) => (
